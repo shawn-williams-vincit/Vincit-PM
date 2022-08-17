@@ -1,6 +1,6 @@
-﻿namespace Vincit_PM
+﻿namespace Vincit.PM
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -35,22 +35,24 @@
             // DGVJobs
             // 
             this.DGVJobs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVJobs.Location = new System.Drawing.Point(12, 12);
+            this.DGVJobs.Location = new System.Drawing.Point(20, 19);
+            this.DGVJobs.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.DGVJobs.Name = "DGVJobs";
             this.DGVJobs.RowHeadersWidth = 51;
             this.DGVJobs.RowTemplate.Height = 29;
-            this.DGVJobs.Size = new System.Drawing.Size(1106, 399);
+            this.DGVJobs.Size = new System.Drawing.Size(1797, 638);
             this.DGVJobs.TabIndex = 0;
             // 
-            // Form1
+            // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1130, 450);
+            this.ClientSize = new System.Drawing.Size(1836, 720);
             this.Controls.Add(this.DGVJobs);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Name = "MainForm";
+            this.Text = "Jobs";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGVJobs)).EndInit();
             this.ResumeLayout(false);
 

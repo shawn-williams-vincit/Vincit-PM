@@ -5,9 +5,14 @@ VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vincit PM", "Vincit PM\Vincit PM.csproj", "{6A47F96B-DA26-49AB-BBB2-0A12DEB51FE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vincit.Jobscope.Client", "Vincit.Jobscope.Client\Vincit.Jobscope.Client.csproj", "{C4CE104A-6366-4718-9AE1-0809D209EECD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vincit.Jobscope.Client", "Vincit.Jobscope.Client\Vincit.Jobscope.Client.csproj", "{C4CE104A-6366-4718-9AE1-0809D209EECD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vincit.Jobscope.Domain", "Vincit.Jobscope.Domain\Vincit.Jobscope.Domain.csproj", "{1BE888DC-8930-411D-95E1-481F9A87F724}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vincit.Jobscope.Domain", "Vincit.Jobscope.Domain\Vincit.Jobscope.Domain.csproj", "{1BE888DC-8930-411D-95E1-481F9A87F724}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C01F1686-1AFC-49AA-A332-B5F730B5CB1E}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

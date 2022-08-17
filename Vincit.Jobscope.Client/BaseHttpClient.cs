@@ -6,7 +6,7 @@ public abstract class BaseHttpClient : IBaseHttpClient
 
     protected HttpClient HttpClient { get; set; }
 
-    public BaseHttpClient(HttpClient httpClient)
+    protected BaseHttpClient(HttpClient httpClient)
     {
         HttpClient = httpClient;
         jsonDeserializerOptions = new JsonSerializerOptions
@@ -40,7 +40,6 @@ public abstract class BaseHttpClient : IBaseHttpClient
     public async Task Delete(string url)
     {
         await ProcessRequest<object>(url, HttpMethod.Delete, content: null);
-        return;
     }
 
     #endregion
@@ -85,7 +84,7 @@ public abstract class BaseHttpClient : IBaseHttpClient
         }
     }
 
-    private HttpRequestMessage BuildRequest(string url, HttpMethod method, string? content, string? mimeType = null)
+    private static HttpRequestMessage BuildRequest(string url, HttpMethod method, string? content, string? mimeType = null)
     {
         var request = new HttpRequestMessage(method, url);
 
