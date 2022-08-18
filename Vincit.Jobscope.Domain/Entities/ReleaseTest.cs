@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Vincit.Jobscope.Domain.Entities
 {
-    public class ReleaseTest
+    public class Release
     {
-        public string? JobNumber { get; set; }              //
+
+
+
 
     }
 }

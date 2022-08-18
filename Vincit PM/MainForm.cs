@@ -15,7 +15,7 @@ namespace Vincit.PM
         private readonly IJobscopeClient jobscopeClient;        
 
         private IList<Job> Jobs = new List<Job>();
-        private IList<ReleaseTest> Releases = new List<ReleaseTest>();
+        private IList<Release> Releases = new List<Release>();
 
         #endregion        
 
@@ -41,14 +41,24 @@ namespace Vincit.PM
                 }
             }
 
-            //Jobs = await jobscopeClient.GetJobs("220113");
-            //DGVJobs.DataSource = Jobs;
+            Jobs = await jobscopeClient.GetJobs("220113");
+            DGVJobs.DataSource = Jobs;
 
-            Releases = await jobscopeClient.GetReleases("220113");
-            DGVJobs.DataSource = Releases;
+            //Releases = await jobscopeClient.GetReleases("220113");
+            //DGVJobs.DataSource = Releases;
 
         }
 
+
+        //var query = from order in workOrders
+        //            join plan in plans
+        //                 on order.WorkOrderNumber equals plan.WorkOrderNumber
+        //            select new
+        //            {
+        //                order.WorkOrderNumber,
+        //                order.Description,
+        //                plan.ScheduledDate
+        //            };
         #endregion
 
     }

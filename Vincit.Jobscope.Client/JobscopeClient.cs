@@ -6,7 +6,7 @@ public class JobscopeClient : BaseHttpClient, IJobscopeClient
 {
     private readonly Credentials credentials;
     private readonly AppState appState;
-    private static Timer TimeOutTimer = null; 
+    private static Timer? TimeOutTimer; 
     private static bool tokenValid;
 
     public JobscopeClient(HttpClient httpClient, AppState appState, Credentials credentials) : base(httpClient)
@@ -68,7 +68,7 @@ public class JobscopeClient : BaseHttpClient, IJobscopeClient
     }
 
 
-    public async Task<IList<ReleaseTest>> GetReleases(string? partialJobNumber = default, string? partialReleaseNumber = default, bool? includeComplete = default, int? top = default)
+    public async Task<IList<Release>> GetReleases(string? partialJobNumber = default, string? partialReleaseNumber = default, bool? includeComplete = default, int? top = default)
     {
         var url = "api/Releases?";
         if (partialJobNumber != null)
@@ -88,7 +88,7 @@ public class JobscopeClient : BaseHttpClient, IJobscopeClient
             url = url + $"Top={top}";
         }
 
-        return await Get<IList<ReleaseTest>>(url) ?? new List<ReleaseTest>();
+        return await Get<IList<Release>>(url) ?? new List<Release>();
 
     }
 
