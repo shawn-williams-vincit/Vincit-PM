@@ -1,3 +1,5 @@
+using System.Collections;
+
 namespace Vincit.PM
 {
     public partial class MainForm : Form
@@ -77,15 +79,18 @@ namespace Vincit.PM
             //GLAccounts = await jobscopeClient.GetGLAccounts();
             //DGVJobs.DataSource = GLAccounts;
 
-            // var cquery = from j in Jobs
-            //            join r in Releases
-            //                on j.JobNumber equals r.JobNumber
-            //            select new
-            //            {
-            //                j.JobNumber,
-            //                r.ReleaseNumber,
-            //                r.ReleaseId
-            //            };
+            IEnumerable<JoinQuery> cquery = from j in Jobs
+                                      join r in Releases
+                                          on j.JobNumber equals r.JobNumber
+                                      join rl in ReleaseLineItems
+                                         on r.ReleaseNumber equals rl.ReleaseNumber
+                                      select new JoinQuery
+                                      {
+                                          JobNumber = j.JobNumber,
+                                          ReleaseNumber = r.ReleaseNumber,
+                                          RelLineNumber = rl.LineItemNumber,
+                                      };
+                         
 
 
             //var linqquery = Jobs.Join(
@@ -96,11 +101,11 @@ namespace Vincit.PM
             //                            {
             //                                j.JobNumber,
             //                                r.ReleaseNumber,
-            //                                r.ReleaseId
+            //                                r.ReleaseI
             //                            });
 
 
-            //DGVJobs.DataSource = linqquery;
+            DGVJobs.DataSource = cquery;
 
         }
 
@@ -118,5 +123,11 @@ namespace Vincit.PM
 
         #endregion
 
+        class JoinQuery
+        {
+            public string? JobNumber { get; set; }
+            public string? ReleaseNumber { get; set; }
+            public string? RelLineNumber { get; set; }
+        }
     }
 }
