@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Vincit.Jobscope.Domain.Entities
 {
-    internal class RoutingOperation
+    public class RoutingOperation : JobscopeEntity
     {
         [JsonProperty("routingCode")]
         public string? RoutingCode { get; set; }
 
         [JsonProperty("sequenceNumber")]
-        public int SequenceNumber { get; set; }
+        public int? SequenceNumber { get; set; }
 
         [JsonProperty("divisionId")]
         public string? DivisionId { get; set; }
@@ -22,10 +22,10 @@ namespace Vincit.Jobscope.Domain.Entities
         public string? Label { get; set; }
 
         [JsonProperty("isActive")]
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
 
         [JsonProperty("isOutSideProcess")]
-        public bool IsOutSideProcess { get; set; }
+        public bool? IsOutSideProcess { get; set; }
 
         [JsonProperty("vendorNumber")]
         public string? VendorNumber { get; set; }
@@ -52,7 +52,7 @@ namespace Vincit.Jobscope.Domain.Entities
         public string? StandardOperationRevision { get; set; }
 
         [JsonProperty("isInspectionOperation")]
-        public bool IsInspectionOperation { get; set; }
+        public bool? IsInspectionOperation { get; set; }
 
         [JsonProperty("description")]
         public string? Description { get; set; }
@@ -73,31 +73,31 @@ namespace Vincit.Jobscope.Domain.Entities
         public string? SkillRequired { get; set; }
 
         [JsonProperty("standardSetUpLaborRate")]
-        public double StandardSetUpLaborRate { get; set; }
+        public double? StandardSetUpLaborRate { get; set; }
 
         [JsonProperty("standardRunTime")]
-        public double StandardRunTime { get; set; }
+        public double? StandardRunTime { get; set; }
 
         [JsonProperty("standardSetupTime")]
-        public double StandardSetupTime { get; set; }
+        public double? StandardSetupTime { get; set; }
 
         [JsonProperty("standardRunQuantity")]
-        public double StandardRunQuantity { get; set; }
+        public double? StandardRunQuantity { get; set; }
 
         [JsonProperty("standardTransitTime")]
-        public double StandardTransitTime { get; set; }
+        public double? StandardTransitTime { get; set; }
 
         [JsonProperty("transitUnitOfMeasure")]
         public string? TransitUnitOfMeasure { get; set; }
 
         [JsonProperty("standardPreOpQueueTime")]
-        public double StandardPreOpQueueTime { get; set; }
+        public double? StandardPreOpQueueTime { get; set; }
 
         [JsonProperty("standardPostOpQueueTime")]
-        public double StandardPostOpQueueTime { get; set; }
+        public double? StandardPostOpQueueTime { get; set; }
 
         [JsonProperty("standardCrewSize")]
-        public double StandardCrewSize { get; set; }
+        public double? StandardCrewSize { get; set; }
 
         [JsonProperty("kitPartNumber")]
         public string? KitPartNumber { get; set; }
@@ -106,22 +106,22 @@ namespace Vincit.Jobscope.Domain.Entities
         public string? KitId { get; set; }
 
         [JsonProperty("isReWorkStep")]
-        public bool IsReWorkStep { get; set; }
+        public bool? IsReWorkStep { get; set; }
 
         [JsonProperty("isCertificationPointFirstPass")]
-        public bool IsCertificationPointFirstPass { get; set; }
+        public bool? IsCertificationPointFirstPass { get; set; }
 
         [JsonProperty("isCertificationPointReProcess")]
-        public bool IsCertificationPointReProcess { get; set; }
+        public bool? IsCertificationPointReProcess { get; set; }
 
         [JsonProperty("isControlPoint")]
-        public bool IsControlPoint { get; set; }
+        public bool? IsControlPoint { get; set; }
 
         [JsonProperty("isInspectSetUp")]
-        public bool IsInspectSetUp { get; set; }
+        public bool? IsInspectSetUp { get; set; }
 
         [JsonProperty("isInspectRunEnd")]
-        public bool IsInspectRunEnd { get; set; }
+        public bool? IsInspectRunEnd { get; set; }
 
         [JsonProperty("referToManual")]
         public string? ReferToManual { get; set; }
@@ -142,7 +142,7 @@ namespace Vincit.Jobscope.Domain.Entities
         public string? BreakInRule { get; set; }
 
         [JsonProperty("supplementalOperation")]
-        public bool SupplementalOperation { get; set; }
+        public bool? SupplementalOperation { get; set; }
 
         [JsonProperty("operationSequenceNumber")]
         public string? OperationSequenceNumber { get; set; }
@@ -154,22 +154,22 @@ namespace Vincit.Jobscope.Domain.Entities
         public string? ThruCum { get; set; }
 
         [JsonProperty("isAdded")]
-        public bool IsAdded { get; set; }
+        public bool? IsAdded { get; set; }
 
         [JsonProperty("isRemoved")]
-        public bool IsRemoved { get; set; }
+        public bool? IsRemoved { get; set; }
 
         [JsonProperty("isReplaced")]
-        public bool IsReplaced { get; set; }
+        public bool? IsReplaced { get; set; }
 
         [JsonProperty("applyLearningFactor")]
-        public bool ApplyLearningFactor { get; set; }
+        public bool? ApplyLearningFactor { get; set; }
 
         [JsonProperty("addedByECN")]
         public string? AddedByECN { get; set; }
 
         [JsonProperty("addedECNLineNumber")]
-        public int AddedECNLineNumber { get; set; }
+        public int? AddedECNLineNumber { get; set; }
 
         [JsonProperty("addedByDrawing")]
         public string? AddedByDrawing { get; set; }
@@ -181,25 +181,25 @@ namespace Vincit.Jobscope.Domain.Entities
         public string? AddedByEmployee { get; set; }
 
         [JsonProperty("addedDate")]
-        public DateTime AddedDate { get; set; }
+        public DateTime? AddedDate { get; set; }
 
         [JsonProperty("replacesOperation")]
         public string? ReplacesOperation { get; set; }
 
         [JsonProperty("replacesSequenceNumber")]
-        public double ReplacesSequenceNumber { get; set; }
+        public double? ReplacesSequenceNumber { get; set; }
 
         [JsonProperty("replacedByOperation")]
         public string? ReplacedByOperation { get; set; }
 
         [JsonProperty("replacedBySequenceNumber")]
-        public double ReplacedBySequenceNumber { get; set; }
+        public double? ReplacedBySequenceNumber { get; set; }
 
         [JsonProperty("replacedByECN")]
         public string? ReplacedByECN { get; set; }
 
         [JsonProperty("replacedECNLineNumber")]
-        public int ReplacedECNLineNumber { get; set; }
+        public int? ReplacedECNLineNumber { get; set; }
 
         [JsonProperty("replacedByDrawing")]
         public string? ReplacedByDrawing { get; set; }
@@ -211,13 +211,13 @@ namespace Vincit.Jobscope.Domain.Entities
         public string? ReplacedByEmployee { get; set; }
 
         [JsonProperty("replacedDate")]
-        public DateTime ReplacedDate { get; set; }
+        public DateTime? ReplacedDate { get; set; }
 
         [JsonProperty("removedByECN")]
         public string? RemovedByECN { get; set; }
 
         [JsonProperty("removedECNLineNumber")]
-        public int RemovedECNLineNumber { get; set; }
+        public int? RemovedECNLineNumber { get; set; }
 
         [JsonProperty("removedByDrawing")]
         public string? RemovedByDrawing { get; set; }
@@ -229,22 +229,22 @@ namespace Vincit.Jobscope.Domain.Entities
         public string? RemovedByEmployee { get; set; }
 
         [JsonProperty("removedDate")]
-        public DateTime RemovedDate { get; set; }
+        public DateTime? RemovedDate { get; set; }
 
         [JsonProperty("conversion")]
-        public double Conversion { get; set; }
+        public double? Conversion { get; set; }
 
         [JsonProperty("isAddedPending")]
-        public bool IsAddedPending { get; set; }
+        public bool? IsAddedPending { get; set; }
 
         [JsonProperty("isRemovedPending")]
-        public bool IsRemovedPending { get; set; }
+        public bool? IsRemovedPending { get; set; }
 
         [JsonProperty("isReplacedPending")]
-        public bool IsReplacedPending { get; set; }
+        public bool? IsReplacedPending { get; set; }
 
         [JsonProperty("routingOperationProcessCodeID")]
-        public double RoutingOperationProcessCodeID { get; set; }
+        public double? RoutingOperationProcessCodeID { get; set; }
 
         [JsonProperty("userDefinedFields")]
         public List<RoutingOperation_UserDefinedField>? UserDefinedFields { get; set; }

@@ -16,8 +16,16 @@ namespace Vincit.PM
 
         private IList<Job> Jobs = new List<Job>();
         private IList<Release> Releases = new List<Release>();
+        private IList<ReleaseLineItem> ReleaseLineItems = new List<ReleaseLineItem>();  
 
-        #endregion        
+        private IList<RoutingOperation> RoutingOperations = new List<RoutingOperation>();
+        private IList<RoutingHeader> RoutingHeaders = new List<RoutingHeader>();    
+        private IList<BillOfMaterialComponent> BillOfMaterialComponents = new List<BillOfMaterialComponent>(); 
+        private IList<GLAccount> GLAccounts = new List<GLAccount>();    
+
+
+
+        #endregion
 
         #region Event Handlers
 
@@ -41,11 +49,58 @@ namespace Vincit.PM
                 }
             }
 
-            Jobs = await jobscopeClient.GetJobs("220113");
-            DGVJobs.DataSource = Jobs;
+            string JobNumber = "I210341";
 
-            //Releases = await jobscopeClient.GetReleases("220113");
+            Jobs = await jobscopeClient.GetJobs(JobNumber);
+            //DGVJobs.DataSource = Jobs;
+
+
+            Releases = await jobscopeClient.GetReleases(JobNumber);
             //DGVJobs.DataSource = Releases;
+
+            string? ReleaseNumber = Releases[0].ReleaseNumber;
+            ReleaseLineItems = await jobscopeClient.GetReleaseLineItems(ReleaseNumber);
+            //ReleaseLineItems = await jobscopeClient.GetReleaseLineItems("I220113");
+            //DGVJobs.DataSource = ReleaseLineItems;
+
+            //RoutingOperations = await jobscopeClient.GetRoutingOperations();
+            //DGVJobs.DataSource = RoutingOperations;
+
+            //RoutingHeaders = await jobscopeClient.GetRoutingHeaders();
+            //DGVJobs.DataSource = RoutingHeaders;
+
+            //BillOfMaterialComponents = await jobscopeClient.GetBillOfMaterialComponents();
+            //DGVJobs.DataSource = BillOfMaterialComponents;
+
+
+            //Unathorized
+            //GLAccounts = await jobscopeClient.GetGLAccounts();
+            //DGVJobs.DataSource = GLAccounts;
+
+            // var cquery = from j in Jobs
+            //            join r in Releases
+            //                on j.JobNumber equals r.JobNumber
+            //            select new
+            //            {
+            //                j.JobNumber,
+            //                r.ReleaseNumber,
+            //                r.ReleaseId
+            //            };
+
+
+            //var linqquery = Jobs.Join(
+            //                            Releases,
+            //                            Releases => Releases.JobNumber,
+            //                            Jobs => Jobs.JobNumber,
+            //                            (j, r) => new
+            //                            {
+            //                                j.JobNumber,
+            //                                r.ReleaseNumber,
+            //                                r.ReleaseId
+            //                            });
+
+
+            //DGVJobs.DataSource = linqquery;
 
         }
 
@@ -59,6 +114,8 @@ namespace Vincit.PM
         //                order.Description,
         //                plan.ScheduledDate
         //            };
+
+
         #endregion
 
     }
