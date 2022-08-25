@@ -18,7 +18,7 @@ namespace Vincit.Jobscope.Domain.Entities
         [JsonProperty("releaseNumber")]
         public string? ReleaseNumber { get; set; }
 
-        [JsonProperty("jobNumber")]
+        [JsonProperty("jobNumber")]                     //Join to Job
         public string? JobNumber { get; set; }
 
         [JsonProperty("billToSite")]

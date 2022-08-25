@@ -47,6 +47,45 @@ public class JobscopeClient : BaseHttpClient, IJobscopeClient
         return true;
     }
 
+    public async Task<IList<Part>> GetParts(string? PartialPartNumber = default, string? DescriptionContains = default, bool? IncludeInActive = default, int? Top = default)
+    {
+        var url = "api/Parts?";
+        if (PartialPartNumber != null)
+        {
+            url = url + $"PartialPartNumber={HttpUtility.UrlEncode(PartialPartNumber)}";
+        }
+        if (DescriptionContains != null)
+        {
+            url = url + $"DescriptionContains={DescriptionContains}";
+        }
+        if (IncludeInActive != null)
+        {
+            url = url + $"IncludeInActive={IncludeInActive}";
+        }
+        if (Top != null)
+        {
+            url = url + $"Top={Top}";
+        }
+
+        return await Get<IList<Part>>(url) ?? new List<Part>();
+
+    }
+    public async Task<IList<PartRouting>> GetPartRoutings(string? PartNumber, bool? IncludeInActive = default)
+    {
+        var url = "api/PartRoutings?";
+        if (PartNumber != null)
+        {
+            url = url + $"PartNumber={HttpUtility.UrlEncode(PartNumber)}";
+        }
+        if (IncludeInActive != null)
+        {
+            url = url + $"IncludeInActive={IncludeInActive}";
+        }
+
+        return await Get<IList<PartRouting>>(url) ?? new List<PartRouting>();
+
+    }
+ 
     public async Task<IList<Job>> GetJobs(string? PartialJobNumber = default, bool? IncludeComplete = default, int? Top = default)
     {
         var url = "api/Jobs?";
@@ -188,6 +227,158 @@ public class JobscopeClient : BaseHttpClient, IJobscopeClient
         return await Get<IList<GLAccount>>(url) ?? new List<GLAccount>();
 
     }
+    public async Task<IList<APInvoice>> GetAPInvoices(string? PartialInvoiceNumber = default, int? Top = default, bool? IncludePaid = default)
+    {
+        var url = "api/APInvoices?";
+        if (PartialInvoiceNumber != null)
+        {
+            url = url + $"PartialInvoiceNumber={HttpUtility.UrlEncode(PartialInvoiceNumber)}";
+        }
+        if (Top != null)
+        {
+            url = url + $"Top={Top}";
+        }
+        if (IncludePaid != null)
+        {
+            url = url + $"IncludePaid={IncludePaid}";
+        }
+
+        return await Get<IList<APInvoice>>(url) ?? new List<APInvoice>();
+
+    }
+    public async Task<IList<ARInvoice>> GetARInvoices(string? PartialInvoiceNumber = default, int? Top = default, bool? IncludeComplete = default)
+    {
+        var url = "api/ARInvoices?";
+        if (PartialInvoiceNumber != null)
+        {
+            url = url + $"PartialInvoiceNumber={HttpUtility.UrlEncode(PartialInvoiceNumber)}";
+        }
+        if (Top != null)
+        {
+            url = url + $"Top={Top}";
+        }
+        if (IncludeComplete != null)
+        {
+            url = url + $"IncludeComplete={IncludeComplete}";
+        }
+
+        return await Get<IList<ARInvoice>>(url) ?? new List<ARInvoice>();
+
+    }
+    public async Task<IList<ARInvoiceLine>> GetARInvoiceLines(string? PartialInvoiceNumber = default, int? Top = default, bool? IncludeComplete = default)
+    {
+        var url = "api/ARInvoiceLines?";
+        if (PartialInvoiceNumber != null)
+        {
+            url = url + $"PartialInvoiceNumber={HttpUtility.UrlEncode(PartialInvoiceNumber)}";
+        }
+        if (Top != null)
+        {
+            url = url + $"Top={Top}";
+        }
+        if (IncludeComplete != null)
+        {
+            url = url + $"IncludeComplete={IncludeComplete}";
+        }
+
+        return await Get<IList<ARInvoiceLine>>(url) ?? new List<ARInvoiceLine>();
+
+    }
+
+
+    public async Task<IList<ComponentModel>> GetComponentModels(bool? IncludeInActive = default)
+    {
+        var url = "api/ComponentModels?";
+        if (IncludeInActive != null)
+        {
+            url = url + $"IncludeInActive={IncludeInActive}";
+        }
+
+        return await Get<IList<ComponentModel>>(url) ?? new List<ComponentModel>();
+
+    }
+
+    public async Task<IList<Customer>> GetCustomers(string? PartialCustomerNumber = default, int? Top = default, bool? IncludeInActive = default)
+    {
+        var url = "api/Customers?";
+        if (PartialCustomerNumber != null)
+        {
+            url = url + $"PartialCustomerNumber={HttpUtility.UrlEncode(PartialCustomerNumber)}";
+        }
+        if (Top != null)
+        {
+            url = url + $"Top={Top}";
+        }
+        if (IncludeInActive != null)
+        {
+            url = url + $"IncludeInActive={IncludeInActive}";
+        }
+
+        return await Get<IList<Customer>>(url) ?? new List<Customer>();
+
+    }
+    public async Task<IList<CustomerInquiryMaster>> GetCustomerInquiryMasters(string? PartialInquiryNumber = default, int? Top = default, bool? IncludeClosed = default)
+    {
+        var url = "api/CustomerInquiryMasters?";
+        if (PartialInquiryNumber != null)
+        {
+            url = url + $"PartialInquiryNumber={HttpUtility.UrlEncode(PartialInquiryNumber)}";
+        }
+        if (Top != null)
+        {
+            url = url + $"Top={Top}";
+        }
+        if (IncludeClosed != null)
+        {
+            url = url + $"IncludeClosed={IncludeClosed}";
+        }
+
+        return await Get<IList<CustomerInquiryMaster>>(url) ?? new List<CustomerInquiryMaster>();
+
+    }
+    public async Task<IList<CustomerInquiryLine>> GetCustomerInquiryLines(string? PartialInquiryNumber = default, int? Top = default, bool? IncludeClosed = default)
+    {
+        var url = "api/CustomerInquiryLines?";
+        if (PartialInquiryNumber != null)
+        {
+            url = url + $"PartialInquiryNumber={HttpUtility.UrlEncode(PartialInquiryNumber)}";
+        }
+        if (Top != null)
+        {
+            url = url + $"Top={Top}";
+        }
+        if (IncludeClosed != null)
+        {
+            url = url + $"IncludeClosed={IncludeClosed}";
+        }
+
+        return await Get<IList<CustomerInquiryLine>>(url) ?? new List<CustomerInquiryLine>();
+
+    }
+
+    public async Task<IList<CustomerActivity>> GetCustomerActivitys(string? PartialCustomerNumber = default, int? Top = default, bool? IncludeClosed = default)
+    {
+        var url = "api/CustomerActivitys?";
+        if (PartialCustomerNumber != null)
+        {
+            url = url + $"PartialCustomerNumber={HttpUtility.UrlEncode(PartialCustomerNumber)}";
+        }
+        if (Top != null)
+        {
+            url = url + $"Top={Top}";
+        }
+        if (IncludeClosed != null)
+        {
+            url = url + $"IncludeClosed={IncludeClosed}";
+        }
+
+        return await Get<IList<CustomerActivity>>(url) ?? new List<CustomerActivity>();
+
+    }
+
+
+
+
 
 
 

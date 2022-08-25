@@ -16,7 +16,7 @@ namespace Vincit.Jobscope.Domain.Entities
         public double? ReleaseLineItemId { get; set; }
 
         [JsonProperty("releaseNumber")]
-        public string? ReleaseNumber { get; set; }
+        public string? ReleaseNumber { get; set; }      //Join to Release
 
         [JsonProperty("lineItemNumber")]
         public string? LineItemNumber { get; set; }

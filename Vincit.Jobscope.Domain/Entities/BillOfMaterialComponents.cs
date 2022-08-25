@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Vincit.Jobscope.Domain.Entities
 {
-    public class BillOfMaterialComponent
+    public class BillOfMaterialComponent : JobscopeEntity
     {
         [JsonProperty("billOfMaterialComponentId")]
         public double? BillOfMaterialComponentId { get; set; }

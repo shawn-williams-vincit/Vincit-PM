@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Vincit.Jobscope.Domain.Entities
 {
-    public class GLAccount
+    public class GLAccount : JobscopeEntity
     {
         [JsonProperty("account")]
         public string? Account { get; set; }

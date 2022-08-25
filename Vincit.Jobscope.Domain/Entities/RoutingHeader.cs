@@ -40,7 +40,7 @@ namespace Vincit.Jobscope.Domain.Entities
         public bool? EnforceInSequenceProcess { get; set; }
 
         [JsonProperty("engineeringReleaseNumber")]
-        public string? EngineeringReleaseNumber { get; set; }
+        public string? EngineeringReleaseNumber { get; set; }  //Join Release???
 
         [JsonProperty("engineeringChangeNumber")]
         public string? EngineeringChangeNumber { get; set; }
