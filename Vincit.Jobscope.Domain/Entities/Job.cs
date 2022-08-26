@@ -440,13 +440,15 @@ public class Job_UserDefinedField
 
 public class JobBudget
 {
+    //This calculates all the High Level Financials for 1 or more Jobs
 
     public JobBudget(Job J)
     {
+        //Display Only one Job Financials
         //Original
         Original_HourlyLaborCost = J.LaborBudgetOriginalHourlyCost;
         Original_HourlyLaborHours = J.LaborBudgetOriginalHourlyHours;
-        
+
         Original_EngineeringCost = J.LaborBudgetOriginalSalariedCost;
         Original_EngineeringHours = J.LaborBudgetOriginalSalariedHours;
 
@@ -459,7 +461,7 @@ public class JobBudget
 
         Current_EngineeringCost = J.LaborBudgetRevisedSalariedCost;
         Current_EngineeringHours = J.LaborBudgetRevisedSalariedHours;
-        
+
         Current_TotalCost = J.TotalCurrEarned;
         Current_SellPrice = J.CurrentSellingPrice;
 
@@ -477,19 +479,60 @@ public class JobBudget
         TotalCostApplied = J.CostApplied;
         TotalInvoiced = J.EarnedRevenue;
         HoursIssued = J.LaborHoursEstimated;
+    }
+    public JobBudget(IList<Job> Jobs)
+    {
+        //Display Sum of Multiple Jobs
+        //Sum up all jobs provided
+        foreach (Job J in Jobs)
+        {
+            //Original
+            Original_HourlyLaborCost += J.LaborBudgetOriginalHourlyCost;
+            Original_HourlyLaborHours += J.LaborBudgetOriginalHourlyHours;
 
+            Original_EngineeringCost += J.LaborBudgetOriginalSalariedCost;
+            Original_EngineeringHours += J.LaborBudgetOriginalSalariedHours;
 
+            Original_TotalCost += J.TotalSalesScheduled;
+            Original_SellPrice += J.OriginalSellingPrice;
+
+            //Current
+            Current_HourlyLaborCost += J.LaborBudgetRevisedHourlyCost;
+            Current_HourlyLaborHours += J.LaborBudgetRevisedHourlyHours;
+
+            Current_EngineeringCost += J.LaborBudgetRevisedSalariedCost;
+            Current_EngineeringHours += J.LaborBudgetRevisedSalariedHours;
+
+            Current_TotalCost += J.TotalCurrEarned;
+            Current_SellPrice += J.CurrentSellingPrice;
+
+            //Actual
+            Actual_HourlyLaborCost += J.TotalLaborAmountActual;
+            Actual_HourlyLaborHours += J.LaborHoursActual;
+
+            Actual_EngineeringCost += J.TotalEngineeringActual;
+            Actual_EngineeringHours += J.EngrHoursActual;
+
+            Actual_TotalCost += J.TotalActual;
+            Actual_SellPrice += J.PriceActual;
+
+            //Summary
+            TotalCostApplied += J.CostApplied;
+            TotalInvoiced += J.EarnedRevenue;
+            HoursIssued += J.LaborHoursEstimated;
+
+        }
     }
 
     #region SALES ORIGINAL BUDGET
-    public double? Original_HourlyLaborCost { get; }
-    public double? Original_HourlyLaborHours { get; }
+    public double? Original_HourlyLaborCost { get; private set; }
+    public double? Original_HourlyLaborHours { get; private set; }
 
-    public double? Original_EngineeringCost { get; }
-    public double? Original_EngineeringHours { get; }
+    public double? Original_EngineeringCost { get; private set; }
+    public double? Original_EngineeringHours { get; private set; }
 
-    public double? Original_TotalCost { get; }
-    public double? Original_SellPrice { get; }
+    public double? Original_TotalCost { get; private set; }
+    public double? Original_SellPrice { get; private set; }
 
     public double? Original_MaterialCost 
     {
@@ -525,14 +568,14 @@ public class JobBudget
     #endregion Sales Original Budget END
 
     #region SALES CURRENT BUDGET
-    public double? Current_HourlyLaborCost { get; }
-    public double? Current_HourlyLaborHours { get; }
+    public double? Current_HourlyLaborCost { get; private set; }
+    public double? Current_HourlyLaborHours { get; private set; }
 
-    public double? Current_EngineeringCost { get; }
-    public double? Current_EngineeringHours { get; }
+    public double? Current_EngineeringCost { get; private set; }
+    public double? Current_EngineeringHours { get; private set; }
 
-    public double? Current_TotalCost { get; }
-    public double? Current_SellPrice { get; }
+    public double? Current_TotalCost { get; private set; }
+    public double? Current_SellPrice { get; private set; }
 
     public double? Current_MaterialCost
     {
@@ -568,14 +611,14 @@ public class JobBudget
     #endregion Sales Current Budget
 
     #region SALES ACTUAL BUDGET
-    public double? Actual_HourlyLaborCost { get; }
-    public double? Actual_HourlyLaborHours { get; }
+    public double? Actual_HourlyLaborCost { get; private set; }
+    public double? Actual_HourlyLaborHours { get; private set; }
 
-    public double? Actual_EngineeringCost { get; }
-    public double? Actual_EngineeringHours { get; }
+    public double? Actual_EngineeringCost { get; private set; }
+    public double? Actual_EngineeringHours { get; private set; }
 
-    public double? Actual_TotalCost { get; }
-    public double? Actual_SellPrice { get; }
+    public double? Actual_TotalCost { get; private set; }
+    public double? Actual_SellPrice { get; private set; }
 
     public double? Actual_MaterialCost
     {
@@ -610,11 +653,12 @@ public class JobBudget
     #endregion Sales Actual Budget END
 
     #region LEFT TO SPEND
-    public double? LeftToSpend_HourlyLaborCost { get; set; }
-    public double? LeftToSpend_EngineeringCost { get; set; }
+    public double? LeftToSpend_HourlyLaborCost { get; private set; }
+
+    public double? LeftToSpend_EngineeringCost { get; private set; }
 
     public double? LeftToSpend_MaterialCost { get; set; }
-
+    
     #endregion Left To Spend
 
     #region OVER/UNDER BUDGET
@@ -625,13 +669,14 @@ public class JobBudget
             return Current_HourlyLaborCost - LeftToSpend_HourlyLaborCost - Actual_HourlyLaborCost;
         }
     }
-    public double? OverUnder_HourlyLaborHours
-    {
+    public double? OverUnder_EngineeringCost 
+    { 
         get
         {
-            return Current_HourlyLaborHours - LeftToSpend_EngineeringCost - Actual_HourlyLaborHours;
+            return Current_EngineeringCost - LeftToSpend_EngineeringCost - Actual_EngineeringCost;
         }
     }
+
     public double? OverUnder_MaterialCost
     {
         get
@@ -640,12 +685,20 @@ public class JobBudget
         }
     }
 
+    public double? OverUnder_TotalCost 
+    { 
+        get
+        {
+            return Current_TotalCost - LeftToSpend_HourlyLaborCost - LeftToSpend_EngineeringCost - LeftToSpend_MaterialCost - Actual_TotalCost;
+        }
+    }
+
     #endregion Over/Under Budget END
 
     #region OTHER METRICS
-    public double? TotalCostApplied { get; }
-    public double? TotalInvoiced { get; }
-    public double? HoursIssued { get; }
+    public double? TotalCostApplied { get; private set; }
+    public double? TotalInvoiced { get; private set; }
+    public double? HoursIssued { get; private set; }
     #endregion Other Metrics END
 
 

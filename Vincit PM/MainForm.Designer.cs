@@ -35,18 +35,19 @@
             // DGVJobs
             // 
             this.DGVJobs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVJobs.Location = new System.Drawing.Point(12, 12);
+            this.DGVJobs.Dock = System.Windows.Forms.DockStyle.Top;
+            this.DGVJobs.Location = new System.Drawing.Point(0, 0);
             this.DGVJobs.Name = "DGVJobs";
             this.DGVJobs.RowHeadersWidth = 51;
             this.DGVJobs.RowTemplate.Height = 29;
-            this.DGVJobs.Size = new System.Drawing.Size(1782, 399);
+            this.DGVJobs.Size = new System.Drawing.Size(1806, 112);
             this.DGVJobs.TabIndex = 0;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1806, 450);
+            this.ClientSize = new System.Drawing.Size(1806, 838);
             this.Controls.Add(this.DGVJobs);
             this.Name = "MainForm";
             this.Text = "Jobs";

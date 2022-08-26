@@ -95,9 +95,14 @@ namespace Vincit.PM
                 string JobNumber = "I210232";
                 Jobs = await jobscopeClient.GetJobs(JobNumber);
                 DGVJobs.DataSource = Jobs;
+                DGVJobs.Visible = false;
 
-                JobBudget JB = new JobBudget(Jobs[0]);
-                MessageBox.Show(JB.Original_MaterialCost.ToString() + "  " + JB.Original_Margin.ToString() + "  " + JB.Original_MarginPercent.ToString());
+                JobBudget? JB = new JobBudget(Jobs[0]);
+                //MessageBox.Show(JB.Original_MaterialCost.ToString() + "  " + JB.Original_Margin.ToString() + "  " + JB.Original_MarginPercent.ToString());
+
+                ControlJobBudget CJB = new ControlJobBudget(JB);
+                CJB.Dock = DockStyle.Fill;
+                Controls.Add(CJB);
 
 
                 //Releases = await jobscopeClient.GetReleases(JobNumber);
